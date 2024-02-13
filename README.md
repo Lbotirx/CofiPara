@@ -15,5 +15,5 @@ See data/mmsd2/README.md and data/msti/README.md
 # Training and Test
 Edit model_config.py to change training and test settings.
 ```
-python main,py
+python main.py
 ```
