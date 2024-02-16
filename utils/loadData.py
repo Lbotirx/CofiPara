@@ -34,7 +34,7 @@ class TextIterator():
     def __init__(self, batchSize = 32, seqLen = 75):
         self.batchSize = batchSize
         self.seqLen = seqLen
-        self.textData = dict()      # 以字典格式存储所有的数据
+        self.textData = dict() 
         self.trainNum = []
         self.validNum = []
         self.testNum = []
