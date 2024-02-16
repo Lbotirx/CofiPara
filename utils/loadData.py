@@ -235,7 +235,7 @@ class T5DataSet(Dataset):
         self.max_examples = max_examples
         self.max_src_len = max_src_len  # max num of tokens in tokenize()
         self.max_tgt_len = max_tgt_len
-        self.use_rationale = False      # distil step by step setting
+        self.use_rationale = False      # aborted!! distil step by step setting. 
 
         # self.data_path = data_dir
         self.type_path = type_path
@@ -344,11 +344,6 @@ class T5DataSet(Dataset):
 
                 self.source_data.append(text)
                 
-                if self.use_rationale:
-                    expl_prompt = prompt_expl.format(self.rationale0[str(data_id)].strip())
-                    source_expl.append(expl_prompt)
-                    target_expl.append(self.rationale0[str(data_id)].strip())
-                
                 # text = prompt_test.format(self.text_data[idx].strip())          # ablation study without rationale
         else:
             if self.type_path == 'test':
@@ -357,14 +352,12 @@ class T5DataSet(Dataset):
                 for idx in range(len(self.id_list)):
                     label = self.texti.textData[self.id_list[idx]].label
                     data_id = self.id_list[idx]
-                    # # to avoid shortcut
                     if self.mmsd == 2.0:
                         text = self.mmsd_data[str(data_id)]
                         label = self.mmsd_label[str(data_id)]
                     else:
                         text = self.texti.textData[data_id].sentence.strip()
-                    rationale0 = eval('self.rationale'+str(label))[str(data_id)].strip()
-                    rationale1 = eval('self.rationale'+str(1-label))[str(data_id)].strip()
+                    rationale0, rationale1 = self.rationale0[str(data_id)].strip(),self.rationale1[str(data_id)].strip()           
 
                     text = prompt_train.format(text,
                                         rationale1,
