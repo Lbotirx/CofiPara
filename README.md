@@ -13,7 +13,7 @@ Please also install groudingdino in [GroundingDINO](https://github.com/IDEA-Rese
 
 ## Dataset
 
-See data/mmsd2/README.md and data/msti/README.md
+Please refer to [MSD_Data](https://github.com/Lbotirx/CofiPara/tree/master/data/mmsd2/README.md) and [MSTI_Data](https://github.com/Lbotirx/CofiPara/tree/master/data/msti/README.md)
 
 ## Training and Test
 Edit model_config.py to change training and test settings.
